@@ -115,4 +115,43 @@ public class PersonnelDaoJdbc implements DaoJDBC<Personnel> {
 
 		}
 	}
+
+	@Override
+	public Personnel Update(Personnel object) {
+		
+		if (Find(object.getId()) != null) {
+			try (Connection connect = DriverManager.getConnection(Initializer.url)) {
+
+				PreparedStatement prepareUpdate = connect.prepareStatement(" UPDATE PERSONNE"
+						+ " SET Nom = ?, "
+						+ " Prenom = ?, " 
+						+ " Fonction = ? , "
+                        + " DateNaisssance = ? " 
+						+ "WHERE Id = ? ");
+				prepareUpdate.setString(1, object.getNom());
+                prepareUpdate.setString(2, object.getPrenom());
+                prepareUpdate.setString(3,object.getFonction());
+                prepareUpdate.setDate(4, Date.valueOf(object.getDate_naissance()));
+                prepareUpdate.setInt(5,object.getId());
+                
+         
+				int result = prepareUpdate.executeUpdate();
+				assert result == 1;
+				
+				}catch (SQLException e) {
+					e.printStackTrace();
+
+				}
+			
+			
+			
+		}else {
+			
+			System.out.println("la personne que vous voulez modifier n'existe pas");
+		}
+		
+		
+		
+		return object;
+	}
 }
