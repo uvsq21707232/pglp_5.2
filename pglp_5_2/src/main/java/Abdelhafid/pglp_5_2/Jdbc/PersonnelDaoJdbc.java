@@ -50,6 +50,8 @@ public class PersonnelDaoJdbc implements DaoJDBC<Personnel> {
 				return null;
 			}
 		}
+	
+		
 		return obj;
 	}
 
@@ -148,6 +150,7 @@ public class PersonnelDaoJdbc implements DaoJDBC<Personnel> {
 		}else {
 			
 			System.out.println("la personne que vous voulez modifier n'existe pas");
+			return object;
 		}
 		
 		

@@ -15,18 +15,17 @@ public final class Personnel implements PersonnelInterface, Serializable {
 	 */
 	private static final long serialVersionUID = 1350092881346723535L;
 
-	private final int id;
+	private int id;
 	/**
 	 * Identifiant du composite suivant.
 	 */
 	private static int idCom = 1;
 
-	private final String Nom;
-	private final String Prenom;
+	private String Nom;
+	private String Prenom;
 	private ArrayList<Telephone> num_telephones;
-
-	private final String fonction;
-	private final LocalDate date_naissance;
+	private String fonction;
+	private  LocalDate date_naissance;
 
 	private Personnel(PersonnelBuilder builder) {
 		id = idCom++;
@@ -73,6 +72,7 @@ public final class Personnel implements PersonnelInterface, Serializable {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public ArrayList<Telephone> getNum_telephones() {
 
 		return (ArrayList<Telephone>) this.num_telephones.clone();
@@ -92,12 +92,33 @@ public final class Personnel implements PersonnelInterface, Serializable {
 
 	public String getFonction() {
 		return fonction;
+		
+	}
+	public void setFonction(final String fonction) {
+		 this.fonction=fonction;
 	}
 
 	public int getId() {
 		return this.id;
 	}
+	
+	
+	public void setId(final int num) {
+		 this.id=num;
+	}
+	
+	public void setNom(String nom) {
+		Nom = nom;
+	}
 
+	public void setPrenom(String prenom) {
+		Prenom = prenom;
+	}
+
+	public void setDate_naissance(LocalDate date_naissance) {
+		this.date_naissance = date_naissance;
+	}
+	
 	public void print() {
 		System.out.println(Nom + " " + Prenom + " \nFonction: " + fonction + "\ndate de naissance: " + date_naissance);
 		for (Telephone phone : num_telephones) {

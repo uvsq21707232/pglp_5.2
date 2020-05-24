@@ -8,7 +8,7 @@ public class TestInitializer {
 	
 	@Test
 	public void CreateTables() throws TableExist {
-	Initializer base_donnes= new Initializer();
+	Initializer base_donnes = new Initializer();
 	 base_donnes.CreateAllTables();
 	 
 	}
@@ -16,9 +16,9 @@ public class TestInitializer {
 	
 	/*
 	@Test
-	public void dropCreateTables () throws TableExist, SQLException {
+	public void dropCreateTables () throws TableExist{
 		Initializer base_donnes= new Initializer();
-		 base_donnes.dropCreateTables();
+		 base_donnes.supprimerAllTables();
 	}
 	 */
 }
